@@ -147,16 +147,16 @@ void exam::grademe(void)
         sigd();
     if (input == "y" || input == "Y")
     {
-        if (current_ex->time_bef_grade > time(NULL) && waiting_time)
-        {
-            std::cout << RED << "ERROR: " << RESET << "You must wait at least " << YELLOW << BOLD;
-            if ((((current_ex->time_bef_grade - time(NULL))) / 60) >= 1)
-                std::cout << (current_ex->time_bef_grade - time(NULL)) / 60 << " minutes" << RESET << " and " << YELLOW << BOLD << (current_ex->time_bef_grade - time(NULL)) % 60 << " seconds" << RESET;
-            else
-                std::cout << (current_ex->time_bef_grade - time(NULL)) << " seconds" << RESET;
-            std::cout << " until next grading request, so take your time to make more tests and be sure you will succeed next try!" << std::endl;
-            return;
-        }
+        // if (current_ex->time_bef_grade > time(NULL) && waiting_time)
+        // {
+        //     std::cout << RED << "ERROR: " << RESET << "You must wait at least " << YELLOW << BOLD;
+        //     if ((((current_ex->time_bef_grade - time(NULL))) / 60) >= 1)
+        //         std::cout << (current_ex->time_bef_grade - time(NULL)) / 60 << " minutes" << RESET << " and " << YELLOW << BOLD << (current_ex->time_bef_grade - time(NULL)) % 60 << " seconds" << RESET;
+        //     else
+        //         std::cout << (current_ex->time_bef_grade - time(NULL)) << " seconds" << RESET;
+        //     std::cout << " until next grading request, so take your time to make more tests and be sure you will succeed next try!" << std::endl;
+        //     return;
+        // }
         std::cout << "Ok, making grading request to server now." << std::endl;
         grade_request(0);
     }
@@ -176,14 +176,14 @@ void exam::grade_request(bool i)
                   << "Please be " << LIME << "patient" << RESET << ", this " << LIME << "CAN" << RESET " take several minutes..." << std::endl;
         std::cout << "(10 seconds is fast, 30 seconds is expected, 3 minutes is a maximum)" << std::endl;
         srand(time(NULL));
-        int waiting_seconds = rand() % 5 + 1;
-        for (int i = 0; i < waiting_seconds; i++)
-        {
-            srand(time(NULL));
-            double random = rand() % 6500000 + 250000;
-            std::cout << "waiting..." << std::endl;
-            usleep(random);
-        }
+        // int waiting_seconds = rand() % 5 + 1;
+        // for (int i = 0; i < waiting_seconds; i++)
+        // {
+        //     srand(time(NULL));
+        //     double random = rand() % 6500000 + 250000;
+        //     std::cout << "waiting..." << std::endl;
+        //     usleep(random);
+        // }
     }
 
     if (!file_exists(".system/grading/tester.sh"))
